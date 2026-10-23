@@ -81,9 +81,9 @@ ikon_arah_path = os.path.join(ikon_dir, "ikon_arah_angin.png")
 # ==== Data posisi ====
 data = [
     {"x": 150, "y": 390, "cell": (0, "Tanggal")},
-    {"x": 350, "y": 390, "cell": (0, "Jam")},
+    {"x": 370, "y": 390, "cell": (0, "Jam")},
     {"x": 730, "y": 390, "cell": (8, "Tanggal")},
-    {"x": 930, "y": 390, "cell": (8, "Jam")},
+    {"x": 950, "y": 390, "cell": (8, "Jam")},
     {"x": 450, "y": 795, "cell": (0, "Suhu (°C)")},
     {"x": 450, "y": 895, "cell": (1, "Suhu (°C)")},
     {"x": 450, "y": 990, "cell": (2, "Suhu (°C)")},
