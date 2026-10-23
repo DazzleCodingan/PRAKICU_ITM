@@ -9,7 +9,7 @@ from zoneinfo import ZoneInfo
 
 BASE_DIR = Path(__file__).resolve().parent
 SENDER_EMAIL = "bayufirdanan@gmail.com"
-RECIPIENT_EMAIL = "Bayufirhanan@gmail.com"
+RECIPIENT_EMAIL = "bayufirdanan@gmail.com"
 
 
 def main() -> int:
