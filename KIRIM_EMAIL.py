@@ -9,7 +9,7 @@ from zoneinfo import ZoneInfo
 
 BASE_DIR = Path(__file__).resolve().parent
 SENDER_EMAIL = "bayufirdanan@gmail.com"
-RECIPIENT_EMAIL = "bayufirdanan@gmail.com"
+RECIPIENT_EMAILS = ["bayufirdanan@gmail.com", "titantapson1@gmail.com"]
 
 
 def main() -> int:
@@ -29,7 +29,7 @@ def main() -> int:
     jakarta_time = datetime.now(ZoneInfo("Asia/Jakarta"))
     message["Subject"] = f"Prakiraan Cuaca - {jakarta_time:%Y-%m-%d}"
     message["From"] = SENDER_EMAIL
-    message["To"] = RECIPIENT_EMAIL
+    message["To"] = ", ".join(RECIPIENT_EMAILS)
     message.set_content(
         "Terlampir prakiraan cuaca terbaru.\n"
         "Email ini dikirim otomatis setiap hari pukul 06.00 WIB."
@@ -51,9 +51,9 @@ def main() -> int:
         "smtp.gmail.com", 465, timeout=30
     ) as smtp:
         smtp.login(SENDER_EMAIL, app_password)
-        smtp.send_message(message)
+        smtp.send_message(message, to_addrs=RECIPIENT_EMAILS)
 
-    print(f"Email prakiraan berhasil dikirim ke {RECIPIENT_EMAIL}.")
+    print(f"Email prakiraan berhasil dikirim ke {', '.join(RECIPIENT_EMAILS)}.")
     return 0
 
 
