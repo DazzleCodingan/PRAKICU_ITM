@@ -74,16 +74,15 @@ font_path = (
     else "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 )
 font = ImageFont.truetype(font_path, 34)
+header_font = ImageFont.truetype(font_path, 32)
 
 ikon_dir = os.path.join(base_dir, "ikon_cuaca")
 ikon_arah_path = os.path.join(ikon_dir, "ikon_arah_angin.png")
 
 # ==== Data posisi ====
 data = [
-    {"x": 150, "y": 390, "cell": (0, "Tanggal")},
-    {"x": 370, "y": 390, "cell": (0, "Jam")},
-    {"x": 730, "y": 390, "cell": (8, "Tanggal")},
-    {"x": 950, "y": 390, "cell": (8, "Jam")},
+    {"x": 134, "y": 390, "cell": (0, "Tanggal")},
+    {"x": 710, "y": 390, "cell": (8, "Tanggal")},
     {"x": 450, "y": 795, "cell": (0, "Suhu (°C)")},
     {"x": 450, "y": 895, "cell": (1, "Suhu (°C)")},
     {"x": 450, "y": 990, "cell": (2, "Suhu (°C)")},
@@ -124,11 +123,18 @@ for item in data:
     y = item["y"]
     baris, kolom = item["cell"]
     teks = ambil_nilai(df, baris, kolom)
+    text_font = font
+
+    if kolom == "Tanggal":
+        jam = ambil_nilai(df, baris, "Jam")
+        teks = f"{teks}  {jam} WIB"
+        text_font = header_font
 
     if "File Ikon" not in kolom:
-        draw.text((x, y), teks, font=font, fill="white")
+        draw.text((x, y), teks, font=text_font, fill="white")
 
     if "Kecepatan Angin" in kolom:
+        draw.text((910, y), "Kt", font=font, fill="white")
         arah_angin = ambil_nilai(df, baris, "Arah Angin (°)")
         try:
             angle = float(arah_angin)  # ✅ Tidak dibulatkan
