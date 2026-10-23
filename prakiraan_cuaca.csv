@@ -1,0 +1,20 @@
+Tanggal,Jam,Cuaca,Suhu (°C),Kelembapan (%),Kecepatan Angin (km/j),Kecepatan Angin (knots),Arah Angin (°),File Ikon
+2026-10-24,00:00,Cerah,26,84,5.3,2.9,176,cerah-pm.svg
+2026-10-24,03:00,Cerah,26,85,4.9,2.6,176,cerah-pm.svg
+2026-10-24,06:00,Cerah,25,85,4.5,2.4,199,cerah-am.svg
+2026-10-24,09:00,Cerah,31,60,2.2,1.2,165,cerah-am.svg
+2026-10-24,12:00,Berawan,34,50,7.9,4.3,351,berawan-am.svg
+2026-10-24,15:00,Berawan,31,63,7.3,3.9,336,berawan-am.svg
+2026-10-24,18:00,Berawan,29,73,3.3,1.8,58,berawan-pm.svg
+2026-10-24,21:00,Berawan,26,90,3.9,2.1,154,berawan-pm.svg
+2026-10-25,00:00,Berawan,25,93,3.9,2.1,113,berawan-pm.svg
+2026-10-25,03:00,Berawan,25,94,1,0.5,96,berawan-pm.svg
+2026-10-25,06:00,Berawan,25,92,1.1,0.6,145,berawan-am.svg
+2026-10-25,09:00,Cerah Berawan,31,69,2.2,1.2,38,cerah berawan-am.svg
+2026-10-25,12:00,Cerah Berawan,34,60,9.5,5.1,6,cerah berawan-am.svg
+2026-10-25,15:00,Berawan,32,60,0.5,0.3,79,berawan-am.svg
+2026-10-25,18:00,Berawan,28,79,3.7,2.0,217,berawan-pm.svg
+2026-10-25,21:00,Berawan,27,84,4.9,2.6,121,berawan-pm.svg
+2026-10-26,00:00,Berawan,26,90,3,1.6,115,berawan-pm.svg
+2026-10-26,03:00,Cerah,25,93,3.3,1.8,118,cerah-pm.svg
+2026-10-26,06:00,Cerah Berawan,25,93,3.6,1.9,168,cerah berawan-am.svg
