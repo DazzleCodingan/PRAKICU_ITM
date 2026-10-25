@@ -2,13 +2,18 @@ name: Prakiraan Cuaca Harian
 
 on:
   schedule:
-    # 23:05 UTC = 06:05 WIB
-    - cron: "5 23 * * *"
+    # 23:27 UTC = 06:27 WIB
+    - cron: "27 23 * * *"
   workflow_dispatch:
+
+concurrency:
+  group: prakiraan-cuaca
+  cancel-in-progress: false
 
 jobs:
   update-and-email:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
