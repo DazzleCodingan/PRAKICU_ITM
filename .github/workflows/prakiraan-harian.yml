@@ -17,7 +17,8 @@ concurrency:
 jobs:
   update-and-email:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    # Batas atas: 3 langkah x 3 percobaan x 5 menit = 45 menit + setup
+    timeout-minutes: 50
     steps:
       - name: Log waktu eksekusi
         run: echo "event=${{ github.event_name }} jadwal=${{ github.event.schedule }} mulai=$(date -u)"
@@ -42,12 +43,42 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Fetch forecast data
-        run: python EKSTRAK.py
+        run: |
+          for i in 1 2 3; do
+            echo "EKSTRAK.py percobaan $i/3 - $(date -u)"
+            if timeout -k 10 300 python -u EKSTRAK.py; then
+              exit 0
+            fi
+            echo "Gagal atau lewat 5 menit, diulang paksa..."
+            sleep 5
+          done
+          echo "EKSTRAK.py gagal setelah 3 percobaan"
+          exit 1
 
       - name: Generate forecast image
-        run: python POSISI.py
+        run: |
+          for i in 1 2 3; do
+            echo "POSISI.py percobaan $i/3 - $(date -u)"
+            if timeout -k 10 300 python -u POSISI.py; then
+              exit 0
+            fi
+            echo "Gagal atau lewat 5 menit, diulang paksa..."
+            sleep 5
+          done
+          echo "POSISI.py gagal setelah 3 percobaan"
+          exit 1
 
       - name: Email forecast
         env:
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
-        run: python KIRIM_EMAIL.py
+        run: |
+          for i in 1 2 3; do
+            echo "KIRIM_EMAIL.py percobaan $i/3 - $(date -u)"
+            if timeout -k 10 300 python -u KIRIM_EMAIL.py; then
+              exit 0
+            fi
+            echo "Gagal atau lewat 5 menit, diulang paksa..."
+            sleep 5
+          done
+          echo "KIRIM_EMAIL.py gagal setelah 3 percobaan"
+          exit 1
