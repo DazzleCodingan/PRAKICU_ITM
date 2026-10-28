@@ -3,7 +3,7 @@ name: Prakiraan Cuaca Harian
 on:
   schedule:
     # 22:43 UTC = 05:43 WIB (lebih awal agar tetap sampai sekitar 06:30 WIB walau GitHub telat)
-    - cron: "43 22 * * *"
+    - cron: "43 21 * * *"
   workflow_dispatch:
 
 permissions:
