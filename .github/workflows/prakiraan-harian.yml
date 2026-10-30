@@ -1,9 +1,6 @@
 name: Prakiraan Cuaca Harian
 
 on:
-  schedule:
-    # 22:43 UTC = 05:43 WIB (lebih awal agar tetap sampai sekitar 06:30 WIB walau GitHub telat)
-    - cron: "43 21 * * *"
   workflow_dispatch:
 
 permissions:
@@ -17,13 +14,12 @@ concurrency:
 jobs:
   update-and-email:
     runs-on: ubuntu-latest
-    # Batas atas: 3 langkah x 3 percobaan x 5 menit = 45 menit + setup
     timeout-minutes: 50
     steps:
       - name: Log waktu eksekusi
-        run: echo "event=${{ github.event_name }} jadwal=${{ github.event.schedule }} mulai=$(date -u)"
+        run: echo "event=${{ github.event_name }} mulai=$(date -u)"
 
-      - name: Keepalive (cegah jadwal dinonaktifkan)
+      - name: Keepalive (cegah workflow dinonaktifkan)
         continue-on-error: true
         env:
           GH_TOKEN: ${{ github.token }}
